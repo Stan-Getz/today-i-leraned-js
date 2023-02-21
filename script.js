@@ -68,10 +68,13 @@ async function loadFacts() {
   );
 
   const data = await res.json();
+  // console.log(data);
+  // const filteredData = data.filter((fact) => fact.category === 'technology');
+
   createFactList(data);
 }
 
-createFactList(initialFacts);
+// createFactList(initialFacts);
 
 function createFactList(dataArray) {
   // factsList.insertAdjacentHTML('afterbegin', '<li>Jennifer</li>');
@@ -86,7 +89,9 @@ function createFactList(dataArray) {
       target="_blank"
       >(Source)</a>
   </p>
-  <span class="tag" style="background-color: #3b82f6"
+  <span class="tag" style="background-color: ${
+    CATEGORIES.find((el) => el.name === fact.category).color
+  }"
   >${fact.category}</span>
   </li>`
   );
@@ -106,6 +111,11 @@ btn.addEventListener('click', function () {
     btn.textContent = 'Share a fact';
   }
 });
+
+const filterMethod = [7, 64, -23, 11].filter((el) => el > 10);
+console.log(filterMethod);
+const findMethod = [7, 64, -23, 11].find((el) => el > 10);
+console.log(findMethod);
 
 /*
 let votesInteresting = 23;
